@@ -1,0 +1,31 @@
+.pt-headers {
+	p {
+		color: $grey;
+		font-weight: $weight-bold;
+		text-transform: uppercase;
+		font-size: $size-8;
+	}
+}
+
+.product-container {
+	border: 1px solid $grey-light;
+
+	figure {
+		margin-right: 1rem;
+	}
+
+	.columns {
+		margin: 0;
+	}
+
+	.column {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.product-column {
+		border-right: 1px solid $grey-light;
+		padding: 1rem;
+	}
+}

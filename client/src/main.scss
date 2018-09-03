@@ -1,0 +1,17 @@
+// Custom variables
+$size-7: 0.9rem;
+$size-8: 0.75rem;
+
+$box-radius: 0;
+$box-shadow: 0;
+
+$text: #48555b;
+
+@import '../node_modules/bulma/bulma.sass';
+
+// Bulma Class Modifications and Additions
+.is-size-8 {
+	font-size: $size-8;
+}
+
+@import 'scss/all';

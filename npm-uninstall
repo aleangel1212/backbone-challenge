@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker exec -it $1 bash -c "cd /app && npm uninstall $2"
