@@ -15,5 +15,5 @@ docker-compose up -d
 To install and remove dependencies use the scripts located in the root of the project directory
 
 ```bash
-./npm-install [docker-container] [dependency-name]
+./npm-install [docker-container] [dependency-name] [--save || --save-dev]
 ```
