@@ -32,6 +32,13 @@
 		display: block;
 	}
 
+	@media screen and (max-width: $tablet) {
+		.product-column {
+			border-right: none;
+			border-bottom: 1px solid $grey-light;
+		}
+	}
+
 	.product-column > * {
 		display: inline-block;
 		vertical-align: middle;

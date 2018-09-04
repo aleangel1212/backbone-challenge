@@ -12,7 +12,7 @@ const ProductTable = observer(props => {
 
 	return (
 		<div>
-			<div className="columns is-mobile pt-headers">
+			<div className="columns is-mobile pt-headers is-hidden-mobile">
 				<p className="column is-4">Product</p>
 				<p className="column has-text-centered">Price</p>
 				<p className="column has-text-centered">Code</p>

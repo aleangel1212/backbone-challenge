@@ -9,8 +9,8 @@ const ProductView = observer(props => (
 		className="product-container"
 		onClick={() => props.ps.toggleModal(props.product)}
 	>
-		<div className="columns is-mobile">
-			<div className="column is-4 product-column">
+		<div className="columns">
+			<div className="column is-4 product-column has-text-centered-mobile">
 				<div>
 					<figure className="image is-48x48">
 						<img
@@ -25,15 +25,21 @@ const ProductView = observer(props => (
 				</p>
 			</div>
 			<div className="column">
-				<p className="is-size-7">${props.product.price}</p>
+				<p className="is-size-7">
+					<strong className="is-hidden-tablet">Price: </strong>$
+					{props.product.price}
+				</p>
 			</div>
 			<div className="column">
+				<strong className="is-hidden-tablet">Code: </strong>
 				<p className="is-size-7">{props.product.code}</p>
 			</div>
 			<div className="column">
+				<strong className="is-hidden-tablet">Created By: </strong>
 				<p className="is-size-7">{props.product.creator}</p>
 			</div>
 			<div className="column">
+				<strong className="is-hidden-tablet">Last Modified: </strong>
 				<p className="is-size-7">{props.product.formattedDate}</p>
 			</div>
 		</div>
