@@ -20,7 +20,7 @@ app.post('/api/products', (req, res) => {
 		'last_modified',
 	]);
 
-	newProduct.id = data[data.length - 1].id + 1;
+	newProduct.id = data[data.length - 1] ? data[data.length - 1].id + 1 : 0;
 
 	data.push(newProduct);
 
@@ -30,7 +30,7 @@ app.post('/api/products', (req, res) => {
 app.delete('/api/products/:id', (req, res) => {
 	const deletedProduct = data.find(p => p.id === parseInt(req.params.id, 10));
 
-	data = data.filter(p => p.id !== req.params.id);
+	data = data.filter(p => p.id !== parseInt(req.params.id, 10));
 
 	res.send(deletedProduct);
 });

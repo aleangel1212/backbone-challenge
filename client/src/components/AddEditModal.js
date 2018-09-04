@@ -24,6 +24,24 @@ class AddEditModal extends Component {
 		this.props.ps.toggleModal();
 	}
 
+	renderDelete() {
+		if (!this.props.ps.editProduct.update) return null;
+
+		return (
+			<div className="level-right">
+				<button
+					className="button level-item is-danger"
+					onClick={() => {
+						this.props.ps.deleteProduct(this.props.ps.editProduct);
+						this.props.ps.toggleModal();
+					}}
+				>
+					Delete
+				</button>
+			</div>
+		);
+	}
+
 	render() {
 		const { ps } = this.props;
 		const { modalActive, editProduct } = ps;
@@ -39,7 +57,7 @@ class AddEditModal extends Component {
 				<div className="modal-card">
 					<header className="modal-card-head">
 						<p className="modal-card-title">
-							{editProduct.name ? 'Edit' : 'Add'} Product
+							{editProduct.update ? 'Edit' : 'Add'} Product
 						</p>
 						<button
 							className="delete"
@@ -118,14 +136,7 @@ class AddEditModal extends Component {
 										Cancel
 									</button>
 								</div>
-								<div className="level-right">
-									<button
-										className="button level-item is-danger"
-										onClick={() => ps.toggleModal()}
-									>
-										Delete
-									</button>
-								</div>
+								{this.renderDelete()}
 							</div>
 						</form>
 					</section>

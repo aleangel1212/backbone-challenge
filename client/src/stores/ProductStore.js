@@ -71,6 +71,15 @@ class ProductStore {
 	}
 
 	@action
+	deleteProduct(product) {
+		this.loading = true;
+		axios.delete(`/api/products/${product.id}`).then(({ data }) => {
+			this.products = this.products.filter(p => p.id !== data.id);
+			this.loading = false;
+		});
+	}
+
+	@action
 	toggleModal(product) {
 		this.modalActive = !this.modalActive;
 		this.editProduct = product || {};
