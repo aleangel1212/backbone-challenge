@@ -2,6 +2,9 @@ import { observable, action, computed } from 'mobx';
 import axios from 'axios';
 import moment from 'moment';
 
+// Each product in the Product Store is initialized as a product
+// allowing us to update a product individually without having to
+// re-render the entire product list
 class Product {
 	id;
 
@@ -27,6 +30,7 @@ class Product {
 		Object.keys(product).forEach(key => (this[key] = product[key]));
 	}
 
+	// Updates a single instance of a product
 	@action
 	update(newData) {
 		axios.patch(`/api/products/${newData.id}`, newData).then(({ data }) => {
@@ -34,12 +38,14 @@ class Product {
 		});
 	}
 
+	// Used to display the date on the Product View
 	@computed
 	get formattedDate() {
 		return moment.unix(this.last_modified).format('MMMM Do YYYY');
 	}
 }
 
+// The main store for the application. Contains all product data in the products array
 class ProductStore {
 	@observable
 	products = [];

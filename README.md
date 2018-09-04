@@ -1,6 +1,6 @@
 # Backbone PLM Challenge Application
 
-React app that utilizes MobX and Express to display a product table that can be manipulated via various API calls.
+React app that utilizes MST and Express to display a product table that can be manipulated via various API calls.
 
 To start developing, you must have docker installed and execute:
 
@@ -17,3 +17,13 @@ To install and remove dependencies use the scripts located in the root of the pr
 ```bash
 ./npm-install [docker-container] [dependency-name] [--save || --save-dev]
 ```
+
+##Usage
+
+To modify product details, click on any product and the editor will appear. Here you can change any of the fields including the product picture.
+
+To delete a product, click on a product and select delete.
+
+You can add products by clicking on + Product button on the nav bar.
+
+You can search through added products via the search bar on the navbar. You can search through products by product name, code, and creator.

@@ -4,6 +4,9 @@ const path = require('path');
 const fileUpload = require('express-fileupload');
 const _ = require('lodash');
 
+// Utilizing array instead of db for simplicity.
+// Normally, here we would intialize mongoose to interface
+// with MongoDB
 let data = require('./initial-data.json');
 
 const app = express();
@@ -12,9 +15,12 @@ const UPLOAD_DIR = path.join(__dirname, './uploads');
 app.use(bodyParser.json());
 app.use(fileUpload());
 
+//TODO: abstract routes for each category to their own files
+/* --- Product Routes --- */
 app.get('/api/products', (req, res) => res.send(data));
 
 app.post('/api/products', (req, res) => {
+	// Strip unwanted data from request body
 	const newProduct = _.pick(req.body, [
 		'img',
 		'name',
@@ -40,6 +46,7 @@ app.delete('/api/products/:id', (req, res) => {
 });
 
 app.patch('/api/products/:id', (req, res) => {
+	// Strip unwanted data from request body
 	let updatedProduct = _.pick(req.body, [
 		'img',
 		'name',
@@ -58,6 +65,7 @@ app.patch('/api/products/:id', (req, res) => {
 	res.send(updatedProduct);
 });
 
+/* --- Picture Upload Routes --- */
 app.post('/uploads', (req, res) => {
 	const img = req.files.img;
 
