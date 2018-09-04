@@ -26,20 +26,22 @@ const ProductView = observer(props => (
 			</div>
 			<div className="column">
 				<p className="is-size-7">
-					<strong className="is-hidden-tablet">Price: </strong>$
+					<strong className="is-hidden-tablet">Price:&nbsp;</strong>$
 					{props.product.price}
 				</p>
 			</div>
 			<div className="column">
-				<strong className="is-hidden-tablet">Code: </strong>
-				<p className="is-size-7">{props.product.code}</p>
+				<strong className="is-hidden-tablet">Code:&nbsp;</strong>
+				<p className="is-size-7"> {props.product.code}</p>
 			</div>
 			<div className="column">
-				<strong className="is-hidden-tablet">Created By: </strong>
+				<strong className="is-hidden-tablet">Created By:&nbsp;</strong>
 				<p className="is-size-7">{props.product.creator}</p>
 			</div>
 			<div className="column">
-				<strong className="is-hidden-tablet">Last Modified: </strong>
+				<strong className="is-hidden-tablet">
+					Last Modified:&nbsp;
+				</strong>
 				<p className="is-size-7">{props.product.formattedDate}</p>
 			</div>
 		</div>
