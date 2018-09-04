@@ -2,7 +2,7 @@ import React from 'react';
 
 import logo from '../img/logo.png';
 
-const Navbar = () => (
+const Navbar = props => (
   <nav className="navbar">
     <div className="navbar-brand">
       <a className="navbar-item">
@@ -22,11 +22,11 @@ const Navbar = () => (
       <div className="navbar-end">
         <div className="navbar-item">
           <div className="control">
-            <a className="button" target="_blank">
+            <a className="button is-text" onClick={() => props.toggleModal()}>
               <span className="icon">
                 <i className="fas fa-plus" />
               </span>
-              <span>Add Product</span>
+              <span>Product</span>
             </a>
           </div>
         </div>

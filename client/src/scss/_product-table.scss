@@ -9,6 +9,8 @@
 
 .product-container {
 	border: 1px solid $grey-light;
+	margin-bottom: 1rem;
+	cursor: pointer;
 
 	figure {
 		margin-right: 1rem;
@@ -27,5 +29,6 @@
 	.product-column {
 		border-right: 1px solid $grey-light;
 		padding: 1rem;
+		justify-content: flex-start;
 	}
 }

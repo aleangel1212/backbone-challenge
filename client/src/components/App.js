@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 import ProductStore from '../stores/ProductStore';
 
 import Navbar from './Navbar';
+import AddEditModal from './AddEditModal';
 import ProductTable from './ProductTable';
 
 const ps = new ProductStore();
@@ -11,23 +12,24 @@ const ps = new ProductStore();
 @observer
 class App extends Component {
 	componentWillMount() {
-		ps.addProduct({
-			id: 1,
-			name: 'Turtoise Frame',
-			code: 'PW1689',
-			price: 99.0,
-			creator: 'Jon Snow',
-			last_modified: 1538359384,
-		});
+		ps.fetchProducts();
+	}
+
+	renderLoader(loading) {
+		if (!loading) return null;
+
+		return <div className="loader" />;
 	}
 
 	render() {
 		return (
 			<div className="container">
-				<Navbar />
+				<Navbar toggleModal={() => ps.toggleModal()} />
+				<AddEditModal ps={ps} />
 				<section className="section">
 					<h3 className="title is-3">Products</h3>
-					<ProductTable products={ps.products} />
+					<ProductTable ps={ps} />
+					{this.renderLoader(ps.loading)}
 				</section>
 			</div>
 		);

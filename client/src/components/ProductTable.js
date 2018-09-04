@@ -1,53 +1,27 @@
 import React from 'react';
+import { observer } from 'mobx-react';
 
-const renderProducts = products => {
-	return products.map(p => (
-		<div key={p.id} className="product-container">
-			<div className="columns is-mobile">
-				<div className="column is-4 product-column">
-					<div>
-						<figure className="image is-48x48">
-							<img
-								src="https://bulma.io/images/placeholders/48x48.png"
-								alt="Product"
-							/>
-						</figure>
-					</div>
+import ProductView from './ProductView';
 
-					<p className="is-size-6 level-item">
-						Parby Warker - {p.name}
-					</p>
-				</div>
-				<div className="column">
-					<p className="is-size-7">${p.price}</p>
-				</div>
-				<div className="column">
-					<p className="is-size-7">{p.code}</p>
-				</div>
-				<div className="column">
-					<p className="is-size-7">{p.creator}</p>
-				</div>
-				<div className="column">
-					<p className="is-size-7">{p.formattedDate}</p>
-				</div>
+const ProductTable = observer(props => {
+	const renderProducts = products => {
+		return products.map(p => (
+			<ProductView key={p.id} product={p} ps={props.ps} />
+		));
+	};
+
+	return (
+		<div>
+			<div className="columns is-mobile pt-headers">
+				<p className="column is-4">Product</p>
+				<p className="column has-text-centered">Price</p>
+				<p className="column has-text-centered">Code</p>
+				<p className="column has-text-centered">Created By</p>
+				<p className="column has-text-centered">Last Modified</p>
 			</div>
+			{renderProducts(props.ps.products)}
 		</div>
-	));
-};
-
-const ProductTable = props => (
-	<div>
-		<div className="columns is-mobile pt-headers">
-			<p className="column is-size-8 is-uppercase has-text-weight-bold has-text-grey is-4">
-				Product
-			</p>
-			<p className="column has-text-centered">Price</p>
-			<p className="column has-text-centered">Code</p>
-			<p className="column has-text-centered">Created By</p>
-			<p className="column has-text-centered">Last Modified</p>
-		</div>
-		{renderProducts(props.products)}
-	</div>
-);
+	);
+});
 
 export default ProductTable;
