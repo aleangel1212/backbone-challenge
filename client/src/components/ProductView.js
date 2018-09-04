@@ -1,6 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
+const defaultImgUrl = 'https://bulma.io/images/placeholders/48x48.png';
+
 const ProductView = observer(props => (
 	<div
 		className="product-container"
@@ -11,7 +13,7 @@ const ProductView = observer(props => (
 				<div>
 					<figure className="image is-48x48">
 						<img
-							src="https://bulma.io/images/placeholders/48x48.png"
+							src={props.product.img || defaultImgUrl}
 							alt="Product"
 						/>
 					</figure>

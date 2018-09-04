@@ -5,7 +5,8 @@
 		"code": "PW1689",
 		"price": 99.0,
 		"creator": "Jon Snow",
-		"last_modified": 1538359384
+		"last_modified": 1538359384,
+		"img": "/uploads/picture1.jpg"
 	},
 
 	{
@@ -14,7 +15,8 @@
 		"code": "PW134E",
 		"price": 74.0,
 		"creator": "Samwell Tarly",
-		"last_modified": 153316800
+		"last_modified": 153316800,
+		"img": "/uploads/picture2.jpg"
 	},
 
 	{
@@ -23,6 +25,6 @@
 		"code": "PW001Z",
 		"price": 64.0,
 		"creator": "Arya Stark",
-		"last_modified": 1566604800
+		"img": "/uploads/picture3.jpg"
 	}
 ]

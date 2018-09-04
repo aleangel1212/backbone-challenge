@@ -1,18 +1,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const fileUpload = require('express-fileupload');
 const _ = require('lodash');
 
 let data = require('./initial-data.json');
 
 const app = express();
+const UPLOAD_DIR = path.join(__dirname, './uploads');
 
 app.use(bodyParser.json());
+app.use(fileUpload());
 
 app.get('/api/products', (req, res) => res.send(data));
 
 app.post('/api/products', (req, res) => {
 	const newProduct = _.pick(req.body, [
+		'img',
 		'name',
 		'code',
 		'price',
@@ -37,6 +41,7 @@ app.delete('/api/products/:id', (req, res) => {
 
 app.patch('/api/products/:id', (req, res) => {
 	let updatedProduct = _.pick(req.body, [
+		'img',
 		'name',
 		'code',
 		'price',
@@ -44,7 +49,7 @@ app.patch('/api/products/:id', (req, res) => {
 		'last_modified',
 	]);
 
-	updatedProduct = { id: req.params.id, ...updatedProduct };
+	updatedProduct = { id: parseInt(req.params.id), ...updatedProduct };
 
 	data = data.map(
 		p => (p.id === parseInt(req.params.id, 10) ? updatedProduct : p),
@@ -52,5 +57,18 @@ app.patch('/api/products/:id', (req, res) => {
 
 	res.send(updatedProduct);
 });
+
+app.post('/uploads', (req, res) => {
+	const img = req.files.img;
+
+	img.mv(path.join(UPLOAD_DIR, img.name), err => {
+		res.send({
+			message: 'File uploaded successfully',
+			filename: '/uploads/' + img.name,
+		});
+	});
+});
+
+app.use('/uploads', express.static('uploads'));
 
 app.listen(process.env.PORT || 3000);

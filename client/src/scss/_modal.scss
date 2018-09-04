@@ -1,0 +1,11 @@
+.image-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-size: cover;
+	background-position: center;
+	height: 200px;
+	width: 200px;
+	cursor: pointer;
+}

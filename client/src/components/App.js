@@ -21,12 +21,17 @@ class App extends Component {
 		return <div className="loader" />;
 	}
 
+	renderModal(modalActive) {
+		if (!modalActive) return null;
+
+		return <AddEditModal ps={ps} />;
+	}
+
 	render() {
-		console.log(ps.filter);
 		return (
 			<div className="container">
 				<Navbar ps={ps} />
-				<AddEditModal ps={ps} />
+				{this.renderModal(ps.modalActive)}
 				<section className="section">
 					<h3 className="title is-3">Products</h3>
 					<ProductTable ps={ps} />

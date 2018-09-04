@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { observer } from 'mobx-react';
+import axios from 'axios';
 
 @observer
 class AddEditModal extends Component {
+	state = {
+		isUploading: false,
+		img: this.props.ps.editProduct.img,
+	};
+
 	handleSubmit(e) {
 		e.preventDefault();
 
@@ -14,6 +20,7 @@ class AddEditModal extends Component {
 			price: price.value,
 			code: code.value,
 			creator: creator.value,
+			img: this.state.img,
 			last_modified: Math.round(new Date().getTime() / 1000),
 		};
 
@@ -22,6 +29,24 @@ class AddEditModal extends Component {
 		else this.props.ps.addProduct(product);
 
 		this.props.ps.toggleModal();
+	}
+
+	handleFile(e) {
+		const file = e.target.files[0];
+		const formData = new FormData();
+		formData.append('img', file);
+
+		this.setState({ isUploading: true });
+
+		axios
+			.post('/uploads', formData)
+			.then(({ data }) =>
+				this.setState({ img: data.filename, isUploading: false }),
+			);
+	}
+
+	deleteImage() {
+		this.setState({ img: null });
 	}
 
 	renderDelete() {
@@ -42,11 +67,59 @@ class AddEditModal extends Component {
 		);
 	}
 
+	renderLoader(isUploading) {
+		if (isUploading)
+			return (
+				<div className="control">
+					<div className="box image-box">
+						<div className="loader" />
+					</div>
+				</div>
+			);
+
+		return (
+			<div className="control">
+				<input
+					className="file-input"
+					type="file"
+					ref="file"
+					onChange={this.handleFile.bind(this)}
+				/>
+				<div
+					className="box image-box"
+					onClick={() => {
+						this.refs.file.click();
+					}}
+				>
+					<span className="icon is-large has-text-primary">
+						<i className="fa fa-lg fa-plus" />
+					</span>
+					<span className="file-label has-text-grey-dark">
+						Add Image
+					</span>
+				</div>
+			</div>
+		);
+	}
+
+	renderImage(img) {
+		if (!img) return this.renderLoader(this.state.isUploading);
+
+		return (
+			<div className="control">
+				<div
+					className="box image-box"
+					style={{ backgroundImage: `url(${img})` }}
+				>
+					<a className="delete" onClick={() => this.deleteImage()} />
+				</div>
+			</div>
+		);
+	}
+
 	render() {
 		const { ps } = this.props;
-		const { modalActive, editProduct } = ps;
-
-		if (!modalActive) return null;
+		const { editProduct } = ps;
 
 		return (
 			<div className="modal is-active">
@@ -117,6 +190,10 @@ class AddEditModal extends Component {
 										defaultValue={editProduct.creator}
 									/>
 								</div>
+							</div>
+
+							<div className="field is-grouped is-grouped-multiline">
+								{this.renderImage(this.state.img)}
 							</div>
 
 							<div className="level">

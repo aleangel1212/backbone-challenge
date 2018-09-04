@@ -4,7 +4,6 @@ $size-7: 0.9rem;
 $size-8: 0.75rem;
 
 $box-radius: 0;
-$box-shadow: 0;
 
 $control-radius: 0;
 $input-shadow: none;
@@ -17,12 +16,17 @@ $green: #53917e;
 $red: #c95d63;
 
 $text: #48555b;
+$primary: $text;
 
 @import '../node_modules/bulma/bulma.sass';
 
 // Bulma Class Modifications and Additions
 .is-size-8 {
 	font-size: $size-8;
+}
+
+.file-input {
+	display: none;
 }
 
 @import 'scss/all';

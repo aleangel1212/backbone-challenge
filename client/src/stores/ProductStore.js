@@ -20,6 +20,9 @@ class Product {
 	@observable
 	last_modified;
 
+	@observable
+	img;
+
 	constructor(product) {
 		Object.keys(product).forEach(key => (this[key] = product[key]));
 	}
