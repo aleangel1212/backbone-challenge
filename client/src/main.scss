@@ -1,3 +1,4 @@
+@import '../node_modules/bulma/sass/utilities/initial-variables';
 // Custom variables
 $size-7: 0.9rem;
 $size-8: 0.75rem;
@@ -7,6 +8,13 @@ $box-shadow: 0;
 
 $control-radius: 0;
 $input-shadow: none;
+
+$modal-card-head-background-color: $white;
+$modal-card-head-radius: 0;
+
+$blue: #6daedb;
+$green: #53917e;
+$red: #c95d63;
 
 $text: #48555b;
 

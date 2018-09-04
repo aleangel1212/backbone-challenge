@@ -101,22 +101,29 @@ class AddEditModal extends Component {
 								</div>
 							</div>
 
-							<div className="field is-grouped">
-								<div className="control">
+							<div className="level">
+								<div className="level-left">
 									<button
-										className="button is-success"
+										className="button level-item is-success"
 										type="submit"
 										onClick={this.handleSubmit.bind(this)}
 									>
 										Submit
 									</button>
-								</div>
-								<div className="control">
+
 									<button
-										className="button"
+										className="button level-item is-text"
 										onClick={() => ps.toggleModal()}
 									>
 										Cancel
+									</button>
+								</div>
+								<div className="level-right">
+									<button
+										className="button level-item is-danger"
+										onClick={() => ps.toggleModal()}
+									>
+										Delete
 									</button>
 								</div>
 							</div>
