@@ -18,7 +18,7 @@ To install and remove dependencies use the scripts located in the root of the pr
 ./npm-install [docker-container] [dependency-name] [--save || --save-dev]
 ```
 
-##Usage
+## Usage
 
 To modify product details, click on any product and the editor will appear. Here you can change any of the fields including the product picture.
 
