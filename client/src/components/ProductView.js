@@ -4,6 +4,7 @@ import { observer } from 'mobx-react';
 const defaultImgUrl = 'https://bulma.io/images/placeholders/48x48.png';
 
 const ProductView = observer(props => (
+	//Passing a product to toggleModal popluates the form with its values
 	<div
 		className="product-container"
 		onClick={() => props.ps.toggleModal(props.product)}

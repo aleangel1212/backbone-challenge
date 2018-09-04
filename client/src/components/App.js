@@ -7,6 +7,7 @@ import Navbar from './Navbar';
 import AddEditModal from './AddEditModal';
 import ProductTable from './ProductTable';
 
+// Initialize Product Store for application
 const ps = new ProductStore();
 
 @observer
@@ -15,12 +16,14 @@ class App extends Component {
 		ps.fetchProducts();
 	}
 
+	// Displays a spinner when projects are being added to the store
 	renderLoader(loading) {
 		if (!loading) return null;
 
 		return <div className="loader" />;
 	}
 
+	// Renders the add/edit project modal
 	renderModal(modalActive) {
 		if (!modalActive) return null;
 
