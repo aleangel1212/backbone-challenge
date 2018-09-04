@@ -1,6 +1,6 @@
 # Backbone PLM Challenge Application
 
-React app that utilizes MST and Express to display a product table that can be manipulated via various API calls.
+React app that utilizes MobX and best practices like action based state mutationto display a product table that can be manipulated via various API calls. The API is built on Node.js and Express. 
 
 To start developing, you must have docker installed and execute:
 
@@ -17,6 +17,8 @@ To install and remove dependencies use the scripts located in the root of the pr
 ```bash
 ./npm-install [docker-container] [dependency-name] [--save || --save-dev]
 ```
+
+The application is also being hosted [here](http://avecchi.me) temporarily.
 
 ## Usage
 
