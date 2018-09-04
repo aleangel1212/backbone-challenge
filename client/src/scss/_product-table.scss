@@ -29,6 +29,11 @@
 	.product-column {
 		border-right: 1px solid $grey-light;
 		padding: 1rem;
-		justify-content: flex-start;
+		display: block;
+	}
+
+	.product-column > * {
+		display: inline-block;
+		vertical-align: middle;
 	}
 }
