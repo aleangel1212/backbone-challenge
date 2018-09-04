@@ -50,6 +50,9 @@ class ProductStore {
 	@observable
 	modalActive = false;
 
+	@observable
+	filter = '';
+
 	editProduct = {};
 
 	@action
@@ -83,6 +86,23 @@ class ProductStore {
 	toggleModal(product) {
 		this.modalActive = !this.modalActive;
 		this.editProduct = product || {};
+	}
+
+	@action
+	search(term) {
+		this.filter = term;
+	}
+
+	@computed
+	get filteredProducts() {
+		const filter = this.filter.toLowerCase();
+
+		return this.products.filter(
+			p =>
+				p.name.toLowerCase().startsWith(filter) ||
+				p.code.toLowerCase().startsWith(filter) ||
+				p.creator.toLowerCase().startsWith(filter),
+		);
 	}
 }
 

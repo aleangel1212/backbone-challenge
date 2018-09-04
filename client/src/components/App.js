@@ -22,9 +22,10 @@ class App extends Component {
 	}
 
 	render() {
+		console.log(ps.filter);
 		return (
 			<div className="container">
-				<Navbar toggleModal={() => ps.toggleModal()} />
+				<Navbar ps={ps} />
 				<AddEditModal ps={ps} />
 				<section className="section">
 					<h3 className="title is-3">Products</h3>

@@ -19,7 +19,7 @@ const ProductTable = observer(props => {
 				<p className="column has-text-centered">Created By</p>
 				<p className="column has-text-centered">Last Modified</p>
 			</div>
-			{renderProducts(props.ps.products)}
+			{renderProducts(props.ps.filteredProducts)}
 		</div>
 	);
 });
